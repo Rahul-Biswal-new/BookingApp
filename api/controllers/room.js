@@ -5,7 +5,7 @@ import Hotel from "../models/Hotel.js";
 export const createRoom =  async (req,res,next) =>{
 
     const hotelID = req.params.hotelID;
-    const newRoom = req.Room(req.body);
+    const newRoom = new Room(req.body);
 
     try{
         const savedRoom = await newRoom.save();
