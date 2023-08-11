@@ -54,7 +54,7 @@ export const updateRoom = async (req, res, next) => {
     }
   }; 
 
-//   get single hotel
+//   get single room
   export const getRoom = async (req, res, next) => {
     try {
       const room = await Room.findById(req.params.id);

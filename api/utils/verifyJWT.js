@@ -8,14 +8,16 @@ export const verifyToken = (req,res,next)=>{
 
     jwt.verify(token, process.env.JWT, (err,user)=>{
         if (err) return next(createError(403, "token is invalid!"))
+        // setting new req property to use next
         req.user = user;
-
         next()
     })
 }
 
 export const verifyUser = (req, res, next)=>{
     verifyToken( req,res, next, ()=>{
+        // req.user = user;
+        // console.log(user);
         if(req.user.id === req.params.id  || req.user.isAdmin ){
             next()
         }else{
