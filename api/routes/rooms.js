@@ -7,18 +7,18 @@ const router = express.Router();
 
 
 // CREATE
-router.post('/:hotelID' , createRoom)
+router.post('/:hotelID' , verifyAdmin, createRoom)
 
 // UPDATE
-router.put('/:id' , updateRoom)
+router.put('/:id' , verifyAdmin, updateRoom)
 
 // DELETE
-router.delete('/:id/:hotelID' ,  deleteRoom);
+router.delete('/:roomID/:hotelID' , verifyAdmin, deleteRoom);
 
 
 
 // GET
-router.get('/:id', getRoom)
+router.get('/:roomID', getRoom)
 
 
 

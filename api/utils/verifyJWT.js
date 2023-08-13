@@ -10,6 +10,7 @@ export const verifyToken = (req,res,next)=>{
         if (err) return next(createError(403, "token is invalid!"))
         // setting new req property to use next
         req.user = user;
+        // res.send(token)
         next()
     })
 }
