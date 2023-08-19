@@ -6,7 +6,7 @@ export default function Featured() {
 
 
     const {data, loading , error } = useFetch("http://localhost:8800/api/hotels/countbycity?cities=bhubaneswar,pune");
-    console.log(data, "@@HETCH DATA");
+    console.log(data, "@FETCH DATA");
     console.log(loading,  "FETCH LOADING");
     console.log(error , "FETCH ARROR");
   return (

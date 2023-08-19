@@ -59,7 +59,7 @@ export const countbycity = async (req,res,next) =>{
         // return Hotel.find({city: city}).length
         return Hotel.countDocuments({city: city}) 
       }))
-      console.log(list);
+      console.log(list); 
 
       res.status(200).json(list)
     }catch(err){
@@ -74,12 +74,14 @@ export const countbyType = async (req,res,next) =>{
       const apartmentCount = await  Hotel.countDocuments({type: 'apartment'})
       const resortCount =  await Hotel.countDocuments({type: 'resort'})
       const villaCount = await Hotel.countDocuments({type: 'villa'})
+      const cabinCount = await Hotel.countDocuments({type: 'cabin'})
       
        res.status(200).json([
         {type: "hotel", count: hotelCount},
         {type: "apartment", count: apartmentCount},
         {type: "resort", count: resortCount},
-        {type: "villa", count: villaCount}
+        {type: "villa", count: villaCount},
+        {type: "cabin", count: cabinCount}
        ])
 
     }catch(err){
