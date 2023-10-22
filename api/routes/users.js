@@ -15,7 +15,7 @@ router.get('/checkuser/:id', verifyUser)
 
 
 
-// get simgle user
+// get single user
 router.get('/:id', verifyToken, getUser)
 
 // get users
