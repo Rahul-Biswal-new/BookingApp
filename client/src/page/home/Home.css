@@ -1,8 +1,12 @@
-/* div{
-    color: red;
-} */
+div{
+    /* color: red; */
+    margin: 0px;
+    padding : 0px;
+
+}
 
 .homecontainer{
+    
     margin-top:50px;
     display: flex;
     flex-direction: column;

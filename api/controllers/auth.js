@@ -42,7 +42,9 @@ export const login = async (req,res,next) => {
         const result = await user.save();
         console.log(result);
         
-        res.cookie("access_token", token, {httpOnly:true})
+        res.cookie("access_token",
+         token,
+        {httpOnly:true})
         .status(200)
         .json(user)
     
