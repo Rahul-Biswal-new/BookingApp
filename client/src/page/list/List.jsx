@@ -20,10 +20,11 @@ const List = () => {
 
   
 
-  const {data, loading , error, refetch} = useFetch(`http://localhost:8800/api/hotels?city=${destination}&min=${min || 0 }&max=${max || 999}`)
+  const {data, loading , error, reFetch} = useFetch(`http://localhost:8800/api/hotels?city=${destination}&min=${min || 0 }&max=${max || 999}`)
+  console.log(error, "error from api");
 
   const handleClick= ()=>{
-    refetch()
+    reFetch();
   }
 
   return (
@@ -36,7 +37,7 @@ const List = () => {
             <h1 className="lsTitle">Search</h1>
             <div className="lsItem">
               <label>Destination</label>
-              <input placeholder={destination} type="text" />
+              <input placeholder={destination} type="text" onChange={(e)=> setDestination(e.target.value)} />
             </div>
             <div className="lsItem">
               <label>Check-in Date</label>
@@ -98,6 +99,11 @@ const List = () => {
             </div>
             <button onClick={handleClick} >Search</button>
           </div>
+
+
+
+
+                
           <div className="listResult">
 
             {loading ? "loading" : <>

@@ -18,15 +18,15 @@ import { useContext } from "react";
 
 const Hotel = () => {
   const location = useLocation();
-  const id = location.pathname.split('/')[2]
+  const id = location.pathname.split('/')[2];
 
 
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
 
-  const {data, loading , error, refetch} = useFetch(`http://localhost:8800/api/hotels/find/${id}`)
+  const {data, loading , error, reFetch} = useFetch(`http://localhost:8800/api/hotels/find/${id}`)
 
-  // console.log(data, "data");
+  console.log(error, "error from api");
   // const photos = [
   //   {
   //     src: "https://cf.bstatic.com/xdata/images/hotel/max1280x900/261707778.jpg?k=56ba0babbcbbfeb3d3e911728831dcbc390ed2cb16c51d88159f82bf751d04c6&o=&hp=1",
