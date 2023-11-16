@@ -7,9 +7,16 @@ import PropertyList from '../../components/propertyList/PropertyList'
 import FeaturedProperties from '../../components/featuredProperties/FeaturedProperties'
 import MailList from '../../components/mailList/MailList'
 import Footer from '../../components/footer/Footer'
+import SearchContextProvider from '../../context/SearchContext'
+
+
+
+
 export default function Home() {
   return (
-    <div>
+    <div onClick={()=>{
+      console.log(SearchContextProvider,"apple");
+    }}>
         <Navbar></Navbar>
         <Header></Header>
         <div className="homecontainer">

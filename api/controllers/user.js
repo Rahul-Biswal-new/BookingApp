@@ -10,6 +10,8 @@ export const createUser = async (req, res, next) => {
       next(err);
     }
   };
+
+  
   export const updateUser = async (req, res, next) => {
     try {
       const updatedUser = await User.findByIdAndUpdate(

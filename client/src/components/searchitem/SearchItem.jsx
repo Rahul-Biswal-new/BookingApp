@@ -1,6 +1,13 @@
 import "./SearchItem.css";
-import {Link } from "react-router-dom";
+import {Link} from "react-router-dom";
+
+
 const SearchItem = ({item}) => {
+  // const navigate = useNavigate();
+
+  // const seeAvailability =()=>{
+  //   navigate(`/hotels/${item._id}`,{date )
+  // }
   return (
     <div className="searchItem">
       <img

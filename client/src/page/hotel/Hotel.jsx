@@ -14,7 +14,8 @@ import { useState } from "react";
 import useFetch from '../../hooks/userFetch'
 import { useLocation } from "react-router-dom";
 import { useContext } from "react";
-// import { searchContext } from "../../context/searchContext";
+import  { SearchContext } from "../../context/SearchContext";
+
 
 const Hotel = () => {
   const location = useLocation();
@@ -26,7 +27,24 @@ const Hotel = () => {
 
   const {data, loading , error, reFetch} = useFetch(`http://localhost:8800/api/hotels/find/${id}`)
 
-  console.log(error, "error from api");
+  console.log(error, reFetch, "error from api");
+
+  // const {dispatch} = useContext(SearchContext);
+  const {dates} = useContext(SearchContext);
+  // console.log(dates, "date from api");
+  // const [date, setdate] = useState(location.state.date);
+  const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
+  function dayDifference(date1, date2) {
+    const timeDiff = Math.abs(date2.getTime() - date1.getTime());
+    const diffDays = Math.ceil(timeDiff/MILLISECONDS_PER_DAY);
+    return diffDays;
+  }
+
+
+  const days = dayDifference(dates[0].endDate , dates[0].startDate);
+  console.log(dates, "DATE");
+
+
   // const photos = [
   //   {
   //     src: "https://cf.bstatic.com/xdata/images/hotel/max1280x900/261707778.jpg?k=56ba0babbcbbfeb3d3e911728831dcbc390ed2cb16c51d88159f82bf751d04c6&o=&hp=1",
@@ -138,7 +156,7 @@ const Hotel = () => {
                 excellent location score of 9.8!
               </span>
               <h2>
-                <b>$945</b> (9 nights)
+                <b>$945</b> ( {days} nights)
               </h2>
               <button>Reserve or Book Now!</button>
             </div>

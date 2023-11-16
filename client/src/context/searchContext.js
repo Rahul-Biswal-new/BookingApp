@@ -10,9 +10,14 @@ const INITIAL_STATE = {
   },
 };
 
+
+// create context
 export const SearchContext = createContext(INITIAL_STATE);
 
+
+// create function serachReducer, dfecision maker , takes current state and returns new state
 const SearchReducer = (state, action) => {
+  // if else or switch
   switch (action.type) {
     case "NEW_SEARCH":
       return action.payload;
@@ -23,6 +28,8 @@ const SearchReducer = (state, action) => {
   }
 };
 
+
+// component searchContextProvider
 export const SearchContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(SearchReducer, INITIAL_STATE);
 
@@ -39,3 +46,7 @@ export const SearchContextProvider = ({ children }) => {
     </SearchContext.Provider>
   );
 };
+
+// dispatch for child component
+
+export default SearchContextProvider;
