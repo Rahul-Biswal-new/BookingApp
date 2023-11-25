@@ -9,7 +9,7 @@ import List from "./page/list/List";
 import Login from "./page/login/Login";
 
 function App() {
-  return (
+  return ( 
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home/>}/>

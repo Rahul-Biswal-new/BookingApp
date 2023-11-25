@@ -12,9 +12,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import useFetch from '../../hooks/userFetch'
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import  { SearchContext } from "../../context/SearchContext";
+import { AuthContext } from "../../context/AuthContext";
+import Reserve from "../../components/reserve/Reserve";
 
 
 const Hotel = () => {
@@ -22,8 +24,12 @@ const Hotel = () => {
   const id = location.pathname.split('/')[2];
 
 
+  const {user}= useContext(AuthContext);
+  const navigate = useNavigate();
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
+  const [openModal, setOpenModeal] = useState(false);
+
 
   const {data, loading , error, reFetch} = useFetch(`http://localhost:8800/api/hotels/find/${id}`)
 
@@ -87,6 +93,14 @@ const Hotel = () => {
     setSlideNumber(newSlideNumber)
   };
 
+  const handleClick = () => {
+    if(user){
+      setOpenModeal(true);
+    }else{
+      navigate('/login')
+    }
+  }
+
   return (
     <div>
       <Navbar />
@@ -119,7 +133,7 @@ const Hotel = () => {
           </div>
         )}
         <div className="hotelWrapper">
-          <button className="bookNow">Reserve or Book Now!</button>
+          <button onClick={handleClick} className="bookNow">Reserve or Book Now!</button>
           <h1 className="hotelTitle">{data.name}</h1>
           <div className="hotelAddress">
             <FontAwesomeIcon icon={faLocationDot} />
@@ -160,13 +174,14 @@ const Hotel = () => {
               <h2>
                 <b>${data.cheapestPrice*days * options.room }</b> ( {days} nights)
               </h2>
-              <button>Reserve or Book Now!</button>
+              <button onClick={handleClick} >Reserve or Book Now!</button>
             </div>
           </div>
         </div>
         <MailList />
         <Footer />
       </div>}
+      {openModal && <Reserve setOpen={setOpenModeal} hotelId={id}/>}
     </div>
   );
 };
