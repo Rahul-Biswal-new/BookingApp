@@ -30,13 +30,15 @@ const Hotel = () => {
   console.log(error, reFetch, "error from api");
 
   // const {dispatch} = useContext(SearchContext);
-  const {dates} = useContext(SearchContext);
+  const {dates, options} = useContext(SearchContext);
   // console.log(dates, "date from api");
   // const [date, setdate] = useState(location.state.date);
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
     const timeDiff = Math.abs(date2.getTime() - date1.getTime());
     const diffDays = Math.ceil(timeDiff/MILLISECONDS_PER_DAY);
+    // console.log  options
+    console.log(options, "options");
     return diffDays;
   }
 
@@ -156,7 +158,7 @@ const Hotel = () => {
                 excellent location score of 9.8!
               </span>
               <h2>
-                <b>$945</b> ( {days} nights)
+                <b>${data.cheapestPrice*days * options.room }</b> ( {days} nights)
               </h2>
               <button>Reserve or Book Now!</button>
             </div>
