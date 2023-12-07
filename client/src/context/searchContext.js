@@ -15,7 +15,7 @@ const INITIAL_STATE = {
 export const SearchContext = createContext(INITIAL_STATE);
 
 
-// create function serachReducer, dfecision maker , takes current state and returns new state
+// create function searchReducer, decision maker , takes current state and returns new state
 const SearchReducer = (state, action) => {
   // if else or switch
   switch (action.type) {

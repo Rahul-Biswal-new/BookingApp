@@ -36,8 +36,8 @@ const Hotel = () => {
   console.log(error, reFetch, "error from api");
 
   // const {dispatch} = useContext(SearchContext);
-  const {dates, options} = useContext(SearchContext);
-  // console.log(dates, "date from api");
+  const {city , dates, options} = useContext(SearchContext);
+  console.log(city, "city from api");
   // const [date, setdate] = useState(location.state.date);
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {

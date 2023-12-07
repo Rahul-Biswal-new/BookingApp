@@ -15,7 +15,9 @@ export default function Navbar() {
           </Link>
           {user ? user.username : (<div className="navitems">
                 <button className="navbutton">Register</button>
+                <Link to="login">
                 <button className="navbutton">Login</button>
+                </Link>
             </div>)}
             
         </div>

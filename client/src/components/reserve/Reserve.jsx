@@ -21,7 +21,7 @@ function Reserve({setOpen, hotelId}) {
     }
 
     const getDatesInRage = (start,end) =>{
-        const date = new Date(start).getTime();
+        // const date = new Date(start).getTime();
     }
 
     const handleClick =(e)=>{
